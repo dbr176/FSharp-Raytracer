@@ -2,6 +2,7 @@
 
 open Raytracer.VectorsNumerics
 
+[<Struct>]
 type Ray = {
     Origin : vec3
     Direction : vec3
@@ -12,7 +13,9 @@ and public IndexFace(ix : int, iy : int, iz : int, normalDir : float32) = struct
     member __.IZ = iz
     member __.N = normalDir
 end 
-and public CollisionWithFace(fc : IndexFace, pnt : vec3) = struct
+and 
+    [<Struct>]
+    public CollisionWithFace(fc : IndexFace, pnt : vec3) = struct
     member __.Face = fc
     member __.Point = pnt
 end
@@ -31,7 +34,7 @@ and public Color(colorVector : vec4) = struct
             let toByte x = ((max 0.0f x |> min 1.0f) * 255.0f) |> int
             System.Drawing.Color.FromArgb(toByte this.R, toByte this.G, toByte this.B)
 
-        static member  (+) (c1 : Color, c2 : Color) =    
+        static member (+) (c1 : Color, c2 : Color) =    
             Color(c1.ColorVector + c2.ColorVector)
         static member (*) (c1 : float32, c2 : Color) =    
             Color(c1 * c2.ColorVector)

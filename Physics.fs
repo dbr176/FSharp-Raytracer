@@ -28,23 +28,23 @@ module Physics =
             cols |> Array.minBy (fun c -> Vec3.distance c.Point r.Origin) |> Some
 
     let inline findCollisionScene (ms : SceneMesh []) (r : Ray) = 
-        let cols = ms |> Array.choose (fun x -> findCollision r x.Mesh |> Option.map (fun y -> x, y))
+        let cols = ms |> Array.choose (fun x -> findCollision r x.Mesh |> Option.map (fun y -> struct (x, y)))
         if Array.isEmpty cols then None
         else
-            cols |> Array.minBy (fun (_,c) -> Vec3.distance r.Origin c.Point) |> Some
+            cols |> Array.minBy (fun (struct (_,c)) -> Vec3.distance r.Origin c.Point) |> Some
         
     let inline intersectsAll (ms : SceneMesh []) (r : Ray) : bool = 
-        let cols = ms |> Array.choose (fun x -> findCollision r x.Mesh |> Option.map (fun y -> x, y))
+        let cols = ms |> Array.choose (fun x -> findCollision r x.Mesh |> Option.map (fun y -> struct (x, y)))
         Array.isEmpty cols |> not
 
     let inline intersects r = findCollision r >> Option.isSome
         
-    let inline findCollisionsBoundingBoxes (ms : (Mesh * SceneMesh) array) (r : Ray) = 
+    let inline findCollisionsBoundingBoxes (ms : struct (Mesh * SceneMesh) array) (r : Ray) = 
         let cols = 
             ms 
-            |> Array.choose (fun (bb,m) -> 
+            |> Array.choose (fun (struct (bb,m)) -> 
                 if intersects r bb then
-                    findCollision r m.Mesh |> Option.map (fun y -> m, y)
+                    findCollision r m.Mesh |> Option.map (fun y -> struct (m, y))
                 else None)
         Array.isEmpty cols |> not
 

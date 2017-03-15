@@ -14,6 +14,7 @@ module Nullable =
 module Utils =
     let inline degToRad (f : float32) =  float32 System.Math.PI / 180.0f * f
 
+    [<Literal>]
     let epsilon = 0.00001f
 
     let inline fabs x = if x > 0.0f then x else -x

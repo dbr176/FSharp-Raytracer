@@ -9,7 +9,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Raytracer2</RootNamespace>
     <AssemblyName>Raytracer2</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
     <Name>Raytracer2</Name>
@@ -58,7 +58,6 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="VectorsSIMD.fs" />
     <Compile Include="VectorsNumerics.fs" />
-    <Compile Include="Raytracer.CudaVector.fs" />
     <Compile Include="Types.fs" />
     <Compile Include="Utils.fs" />
     <Compile Include="MeshUtils.fs" />
@@ -74,21 +73,17 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
-      <HintPath>packages\FSharp.Core.4.0.0.1\lib\net40\FSharp.Core.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\FSharp.Core.4.1.0.2\lib\net45\FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="NativeInteropEx">
-      <HintPath>packages\NativeInterop.3.1.0\lib\portable-net45+win8\NativeInteropEx.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\NativeInterop.3.2.0\lib\portable-net45+win8\NativeInteropEx.dll</HintPath>
     </Reference>
     <Reference Include="NativeInteropEx.SIMD">
-      <HintPath>packages\NativeInterop.SIMD.3.1.0\lib\portable-net45+win8\NativeInteropEx.SIMD.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\NativeInterop.SIMD.3.2.0\lib\portable-net45+win8\NativeInteropEx.SIMD.dll</HintPath>
     </Reference>
     <Reference Include="NativeInteropEx.VectorView">
-      <HintPath>packages\NativeInterop.SIMD.3.1.0\lib\portable-net45+win8\NativeInteropEx.VectorView.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\NativeInterop.SIMD.3.2.0\lib\portable-net45+win8\NativeInteropEx.VectorView.dll</HintPath>
     </Reference>
     <Reference Include="PixelMap">
       <HintPath>packages\PixelMap.1.0.1\lib\PixelMap.dll</HintPath>
@@ -100,6 +95,9 @@
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors">
       <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>

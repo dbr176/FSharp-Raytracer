@@ -40,7 +40,7 @@ type Raytracer(cam : Camera, sc : Scene) =
         let cols = Physics.findCollisionScene intersected r
         match cols with
         | None -> Color.black
-        | Some (m, c) ->
+        | Some (struct (m, c)) ->
             let f = c.Face
             let pnt = c.Point
             let normal = Mesh.faceNormal' m.Mesh f.IX f.IY f.IZ f.N
